@@ -49,6 +49,7 @@ import { GooglePhotosDashboard } from './components/GooglePhotosDashboard';
 import { apiFetch } from './services/apiClient';
 import { GalleryWrapper } from './components/GalleryWrapper';
 import WhiteboardPopup from './components/WhiteboardPopup';
+import PasswordScreen from './components/PasswordScreen';
 
 interface SearchResult {
   title: string;
@@ -77,9 +78,9 @@ interface Message {
 type QuickMode = 'drive' | 'youtube' | 'tasks' | 'calendar' | 'revista' | 'docs' | 'sheets' | null;
 
 export default function App() {
-  if (window.location.pathname === '/whiteboard') {
-    return <WhiteboardPopup />;
-  }
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('app_authenticated') === 'true';
+  });
 
   const { isConnected: isSupabaseConnected, isTesting: isSupabaseTesting } = useSupabase();
   const [user, setUser] = useState<any>(null);
@@ -105,6 +106,19 @@ export default function App() {
     photos: 0
   });
   const [lastSyncTime, setLastSyncTime] = useState<number>(Date.now());
+
+  const handleUnlock = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('app_authenticated', 'true');
+  };
+
+  if (!isAuthenticated) {
+    return <PasswordScreen onUnlock={handleUnlock} />;
+  }
+
+  if (window.location.pathname === '/whiteboard') {
+    return <WhiteboardPopup />;
+  }
 
   // ... existing state
 
