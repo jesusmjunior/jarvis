@@ -1,0 +1,9 @@
+{
+  "name": "JESUS I.A. 360°",
+  "description": "Agente Hierárquico Goal-Based integrado aos serviços Google (Gmail, Calendar, Drive, Keep, Tasks) com memória de longo prazo no Supabase.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

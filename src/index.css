@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Merriweather", "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Palette - Dark Paper Theme */
+  --color-cyan-500: #06b6d4;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-600: #0891b2;
+  --color-navy-900: #0f172a;
+  --color-graphite-900: #18181b;
+  --color-burnt-yellow: #d4af37;
+  --color-purple-accent: #8a2be2;
+  --color-pastel-purple: #e6e6fa;
+  --color-pastel-pink: #ffd1dc;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-zinc-950 border border-zinc-700 rounded-none;
+  }
+
+  .glass-card {
+    @apply bg-zinc-900 border border-zinc-700 rounded-none p-4 
+           hover:bg-zinc-800 hover:border-zinc-500 transition-all duration-100
+           overflow-hidden;
+  }
+
+  .glass-sidebar {
+    @apply bg-zinc-950 border-l border-zinc-700;
+  }
+
+  .glass-header {
+    @apply bg-zinc-950 border-b border-zinc-700;
+  }
+
+  .glass-footer {
+    @apply bg-zinc-950 border-t border-zinc-700;
+  }
+
+  .glass-message {
+    @apply bg-zinc-900 border border-zinc-700 rounded-none p-6;
+  }
+
+  .card-elegant {
+    @apply bg-zinc-900 border border-zinc-800 rounded-none p-4 
+           hover:bg-zinc-800 hover:border-zinc-700 transition-all duration-150
+           overflow-hidden;
+  }
+
+  /* Mari Report Styling - Newspaper Dark Style */
+  .mari-report {
+    @apply text-zinc-100 leading-[1.9] text-xl;
+    font-family: 'Playfair Display', serif;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .mari-report .first-paragraph::first-letter {
+    float: left;
+    font-size: 6rem;
+    line-height: 0.8;
+    padding-top: 12px;
+    padding-right: 16px;
+    padding-left: 4px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 16px;
+  }
+
+  .mari-report h1, .mari-report h2, .mari-report h3 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.03em;
+    @apply text-white font-black;
+  }
+
+  .mari-report h1 { 
+    @apply text-6xl mb-16 leading-[1.05]; 
+    border-bottom: 4px solid white;
+    padding-bottom: 2rem;
+  }
+  
+  .mari-report h2 { 
+    @apply text-4xl mb-10 mt-20 border-b border-zinc-800 pb-4; 
+    letter-spacing: -0.02em;
+  }
+  
+  .mari-report h3 { 
+    @apply text-2xl mb-8 mt-14 italic text-zinc-300; 
+  }
+
+  .mari-report p {
+    @apply mb-10 text-xl text-zinc-200;
+    font-family: 'Playfair Display', serif;
+    text-align: justify;
+    hyphens: auto;
+    line-height: 1.9;
+    letter-spacing: 0.01em;
+  }
+
+  .mari-report blockquote {
+    @apply my-16 py-8 px-10 bg-zinc-900/30 border-l-2 border-white/20;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #ffffff;
+  }
+
+  .mari-report ul, .mari-report ol {
+    @apply my-10 space-y-4 pl-8 border-l border-zinc-800;
+  }
+
+  .mari-report li {
+    @apply text-zinc-200 text-xl;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.9;
+  }
+
+  .mari-report strong {
+    @apply font-bold text-white;
+  }
+
+  /* A4 Page Simulation - Newspaper Dark Style */
+  .a4-page {
+    @apply bg-black mx-auto border-x border-zinc-900 shadow-none;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 30mm 25mm;
+    position: relative;
+    color: #ffffff;
+  }
+
+  @media (max-width: 210mm) {
+    .a4-page {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
